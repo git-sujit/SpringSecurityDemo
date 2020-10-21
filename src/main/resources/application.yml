@@ -1,0 +1,58 @@
+server:
+  port: 8080
+logging:
+  level:
+    root: INFO
+security:
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: password
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+spring:
+  application:
+    name: SpringSecurityDemo
+      #security:
+      #basic:
+      #enabled: false
+    #user:
+    #name: admin
+    #password: password
+  thymeleaf:
+    cache: false
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/hack?autoReconnect=true&useSSL=false
+    username: hack_admin
+    password: hack_pwd
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-hack.xml
+    default-schema: hack
+  jpa:
+    # JPA has features for DDL generation, and these can be set up to run on startup against the database(generate-ddl)
+    database: MYSQL
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      # DDL generation: Hibernate feature that controls the behavior in a more fine-grained way(ddl-auto)
+      ddl-auto: validate
+      # none because we want liquibase to create database
+      naming:
+        # To create DB column name same as POJO attributes
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        generate_statistics: true
+        format_sql: true
+

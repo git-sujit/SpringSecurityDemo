@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: SpringSecurityDemo
+  cloud:
+    config:
+      uri:
+        - http://localhost:9000
+      enabled: true
+  profiles:
+    active:
+      - dev

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="SujitKSingh">
+        <comment>Create User table</comment>
+        <createTable tableName="User">
+            <column name="userId" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(128)"/>
+            <column name="password" type="varchar(256)"/>
+            <column name="createdDate" type="datetime(6)"/>
+            <column name="modifiedDate" type="datetime(6)"/>
+            <column name="createdBy" type="varchar(256)"/>
+            <column name="modifiedBy" type="varchar(256)"/>
+            <column name="version" type="bigint"/>
+        </createTable>
+        <addAutoIncrement tableName="User"
+                          columnName="userId" columnDataType="bigint" startWith="1000"
+                          incrementBy="1"/>
+    </changeSet>
+    <changeSet id="2" author="SujitKSingh">
+        <comment>Create Authority table</comment>
+        <createTable tableName="Authority">
+            <column name="authId" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="userId" type="bigint"/>
+            <column name="authority" type="varchar(128)"/>
+            <column name="createdDate" type="datetime(6)"/>
+            <column name="modifiedDate" type="datetime(6)"/>
+            <column name="createdBy" type="varchar(256)"/>
+            <column name="modifiedBy" type="varchar(256)"/>
+            <column name="version" type="bigint"/>
+        </createTable>
+        <addAutoIncrement tableName="Authority"
+                          columnName="authId" columnDataType="bigint" startWith="100"
+                          incrementBy="1"/>
+        <addForeignKeyConstraint
+                constraintName="fk_authority_user_key" baseTableName="Authority"
+                baseColumnNames="userId" referencedTableName="User"
+                referencedColumnNames="userId" onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>
