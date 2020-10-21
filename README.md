@@ -1,7 +1,7 @@
 # SpringSecurityDemo
 Spring Security demo with Spring Boot
 
-# Important Classes
+## Important Classes
     - @Configuration: "WebSecurityConfigurerAdapter" 
         - Has methods
             - Authentication: configure(AuthenticationManagerBuilder auth)
@@ -13,5 +13,22 @@ Spring Security demo with Spring Boot
     - @Entity: CustomAuthority implements "GrantedAuthority"
     - CustomSecurityUser implements UserDetails
     - Method level Security: "GlobalMethodSecurityConfiguration"
-# Important Concepts
+## Important Concepts
     - CSRF: Cross Site Request Forgery
+    
+    
+### Spring Boot : https://start.spring.io/
+    - Maven Peoject
+    - Spring Boot 2.3.4
+    - Packaging: Jar
+    - Java 11
+    - Dependencies
+        - spring-boot-starter-web
+        - spring-boot-devtools
+        - spring-boot-starter-security
+        - lombok
+        - spring-boot-starter-data-jpa
+        - liquibase-core
+        - mysql-connector-java
+        - junit
+    
